@@ -9,8 +9,8 @@ help: ## Show this help.
 lint_chart: ## Checks the configured helm chart template definitions against the remote schema
 lint_chart:
 	@set -euo pipefail; \
-	helm dep up ./helm/cas-obps-postgres; \
-	helm template --set ggircs.namespace=dummy-namespace --set ciip.prefix=ciip-prefix -f ./helm/cas-obps-postgres/values-dev.yaml cas-obps-postgres ./helm/cas-obps-postgres --validate;
+	helm dep up ./cas-obps-postgres; \
+	helm template -f ./cas-obps-postgres/values-dev.yaml cas-obps-postgres ./cas-obps-postgres --validate;
 
 
 check_environment: ## Making sure the environment is properly configured for helm
@@ -33,7 +33,7 @@ install:
 install: GIT_SHA1=$(shell git rev-parse HEAD)
 install: IMAGE_TAG=$(GIT_SHA1)
 install: NAMESPACE=$(OBPS_NAMESPACE_PREFIX)-$(ENVIRONMENT)
-install: CHART_DIR=./helm/cas-obps-postgres
+install: CHART_DIR=./cas-obps-postgres
 install: CHART_INSTANCE=cas-obps-postgres
 install: HELM_OPTS=--atomic --wait-for-jobs --timeout 2400s --namespace $(NAMESPACE) \
 										--set defaultImageTag=$(IMAGE_TAG) \

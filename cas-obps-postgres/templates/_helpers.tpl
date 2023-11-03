@@ -31,6 +31,27 @@ Create chart name and version as used by the chart label.
 {{- end }}
 
 {{/*
+Gets the prefix of the namespace. (<openshift_nameplate>, ... )
+*/}}
+{{- define "cas-obps-postgres.namespacePrefix" }}
+{{- (split "-" .Release.Namespace)._0 | trim -}}
+{{- end }}
+
+{{/*
+Gets the suffix of the namespace. (-dev, -tools, ... )
+*/}}
+{{- define "cas-obps-postgres.namespaceSuffix" }}
+{{- (split "-" .Release.Namespace)._1 | trim -}}
+{{- end }}
+
+{{/*
+Create an app-name appended with environment. (app-name-dev, app-name-tools, ... )
+*/}}
+{{- define "cas-obps-postgres.nameWithEnvironment" }}
+{{- printf "%s-%s" .Chart.Name  (split "-" .Release.Namespace)._1 }}
+{{- end }}
+
+{{/*
 Common labels
 */}}
 {{- define "cas-obps-postgres.labels" -}}
@@ -60,3 +81,4 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+

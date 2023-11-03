@@ -1,0 +1,10 @@
+dependencies:
+  override: []
+
+review:
+  checklist: []
+
+deploy:
+  override:
+    - make install:
+        timeout: 5000

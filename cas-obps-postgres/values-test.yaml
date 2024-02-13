@@ -1,3 +1,11 @@
 replicaCount: 1
 
 environment: test
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 250Mi
+  limits:
+    cpu: 500m
+    memory: 800Mi

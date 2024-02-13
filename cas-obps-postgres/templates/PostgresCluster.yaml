@@ -29,13 +29,7 @@ spec:
       # this is how you create a PDB - don't make a separate one yourself!
       minAvailable: 1
       # these resources are for the "database" container in the "obps-postgres-pgha1" set of pods
-      resources:
-        requests:
-          cpu: 50m
-          memory: 128Mi
-        limits:
-          cpu: 250m
-          memory: 512Mi
+      resources: {{ toYaml .Values.resources | nindent 8 }}
       sidecars:
         # this stuff is for the "replication-cert-copy" container in the "obps-postgres-pgha1" set of pods
         replicaCertCopy:

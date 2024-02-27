@@ -25,7 +25,7 @@ spec:
   postgresVersion: 14
   instances:
     - name: pgha1
-      replicas: 3
+      replicas: {{ .Values.replicaCount }}
       # this is how you create a PDB - don't make a separate one yourself!
       minAvailable: 1
       # these resources are for the "database" container in the "obps-postgres-pgha1" set of pods
@@ -45,7 +45,7 @@ spec:
         - "ReadWriteOnce"
         resources:
           requests:
-            storage: 1Gi
+            storage: {{ .Values.storageSize }}
         storageClassName: netapp-block-standard
       affinity:
         podAntiAffinity:

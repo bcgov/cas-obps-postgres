@@ -1,11 +1,11 @@
-replicaCount: 1
+replicaCount: 3
 
 environment: test
 
 resources:
   requests:
-    cpu: 150m
-    memory: 150Mi
+    cpu: 50m
+    memory: 128Mi
   limits:
-    cpu: 400m
-    memory: 400Mi
+    cpu: 200m
+    memory: 256Mi

@@ -1,2 +1,2 @@
 .scratch
-helm/**/charts
+cas-obps-postgres/charts

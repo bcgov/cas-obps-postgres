@@ -75,14 +75,14 @@ spec:
         - configMap:
             name: {{ template "cas-obps-postgres.fullname" . }}-pgbackrest
         - secret:
-            name: gcp-{{ .Release.Namespace }}-obps-postgres-backups-service-account-key
+            name: gcp-{{ .Release.Namespace }}-obps-backups-service-account-key
             items:
               - key: credentials.json
                 path: gcs-key.json
       repos:
         - name: repo1
           gcs:
-            bucket: {{ .Release.Namespace }}-obps-postgres-backups
+            bucket: {{ .Release.Namespace }}-obps-backups
           schedules:
             full: "0 8 * * *"
             # run incremental backup every 4 hours, except at 8am UTC (when the full backup is running)

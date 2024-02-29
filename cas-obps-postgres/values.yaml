@@ -85,5 +85,5 @@ affinity: {}
 
 terraform-bucket-provision:
   terraform:
-    namespace_apps: '["obps-postgres-backups"]'
+    namespace_apps: '["obps-backups"]'
     workspace: postgres

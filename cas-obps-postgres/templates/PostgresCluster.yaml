@@ -75,7 +75,7 @@ spec:
         - configMap:
             name: {{ template "cas-obps-postgres.fullname" . }}-pgbackrest
         - secret:
-            name: gcp-{{ .Release.Namespace }}-obps-backups-sa-key
+            name: gcp-{{ .Release.Namespace }}-obps-postgres-backups-service-account-key
             items:
               - key: credentials.json
                 path: gcs-key.json

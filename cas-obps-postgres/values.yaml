@@ -82,3 +82,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+terraform-bucket-provision:
+  terraform:
+    namespace_apps: '["obps-postgres-backups"]'
+    workspace: postgres

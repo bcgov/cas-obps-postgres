@@ -37,6 +37,8 @@ install: CHART_DIR=./cas-obps-postgres
 install: CHART_INSTANCE=cas-obps-postgres
 install: HELM_OPTS=--atomic --wait-for-jobs --timeout 2400s --namespace $(NAMESPACE) \
 										--set defaultImageTag=$(IMAGE_TAG) \
+										--set metabase.prefix=$(GGIRCS_NAMESPACE_PREFIX) \
+										--set metabase.environment=$(ENVIRONMENT) \
 										--values $(CHART_DIR)/values-$(ENVIRONMENT).yaml
 install:
 	@set -euo pipefail; \

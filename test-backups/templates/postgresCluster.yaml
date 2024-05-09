@@ -11,14 +11,14 @@ spec:
         - configMap:
             name: {{ template "test-backups.fullname" . }}-pgbackrest
         - secret:
-            name: gcp-d193ca-prod-obps-backups-service-account-key
+            name: gcp-{{ .Values.sourceNamespace }}-obps-backups-service-account-key
             items:
               - key: credentials
                 path: gcs-key.json
       repo:
         name: repo1
         gcs:
-          bucket: "d193ca-prod-obps-backups"
+          bucket: {{ .Values.sourceNamespace }}-obps-backups
   image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:ubi8-14.7-0
   metadata:
     labels: {{ include "test-backups.labels" . | nindent 6 }} 

@@ -19,7 +19,6 @@ spec:
   #         limits:
   #           cpu: 100m
   #           memory: 64Mi
-  image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:ubi8-14.7-0
   metadata:
     labels: {{ include "cas-obps-postgres.labels" . | nindent 6 }}
   postgresVersion: 14
@@ -67,7 +66,6 @@ spec:
 
   backups:
     pgbackrest:
-      image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-pgbackrest:ubi8-2.41-4
       global:
         repo1-retention-full: "90"
         repo1-retention-full-type: time
@@ -122,7 +120,6 @@ spec:
           max_wal_size: '500MB' # default is 1GB
   proxy:
     pgBouncer:
-      image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-pgbouncer:ubi8-1.18-0
       config:
         global:
           client_tls_sslmode: disable

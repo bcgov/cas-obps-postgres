@@ -9,7 +9,11 @@ jobs:
   make-lint-chart:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Install oc
+        uses: redhat-actions/oc-installer@v1
+        with:
+          oc_version: '4.6'
       - name: Authenticate to OpenShift Linter namespace
         uses: redhat-actions/oc-login@v1
         with:

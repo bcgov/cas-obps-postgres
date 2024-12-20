@@ -21,7 +21,7 @@ spec:
   #           memory: 64Mi
   metadata:
     labels: {{ include "cas-obps-postgres.labels" . | nindent 6 }}
-  postgresVersion: 14
+  postgresVersion: 16
   instances:
     - name: pgha1
       replicas: {{ .Values.replicaCount }}

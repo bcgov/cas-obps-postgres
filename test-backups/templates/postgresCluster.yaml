@@ -21,7 +21,7 @@ spec:
           bucket: {{ .Values.sourceNamespace }}-obps-backups
   metadata:
     labels: {{ include "test-backups.labels" . | nindent 6 }}
-  postgresVersion: 14
+  postgresVersion: 16
   instances:
     - name: pgha1
       replicas: 1

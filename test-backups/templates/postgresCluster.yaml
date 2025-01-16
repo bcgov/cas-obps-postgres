@@ -19,9 +19,8 @@ spec:
         name: repo1
         gcs:
           bucket: {{ .Values.sourceNamespace }}-obps-backups
-  image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-postgres:ubi8-14.7-0
   metadata:
-    labels: {{ include "test-backups.labels" . | nindent 6 }} 
+    labels: {{ include "test-backups.labels" . | nindent 6 }}
   postgresVersion: 14
   instances:
     - name: pgha1
@@ -61,12 +60,11 @@ spec:
                 topologyKey: kubernetes.io/hostname
                 labelSelector:
                   matchLabels:
-                    postgres-operator.crunchydata.com/cluster: {{ template "test-backups.fullname" . }} 
+                    postgres-operator.crunchydata.com/cluster: {{ template "test-backups.fullname" . }}
                     postgres-operator.crunchydata.com/instance-set: pgha1
 
   backups:
     pgbackrest:
-      image: artifacts.developer.gov.bc.ca/bcgov-docker-local/crunchy-pgbackrest:ubi8-2.41-4
       repos:
         - name: repo2
           volume:

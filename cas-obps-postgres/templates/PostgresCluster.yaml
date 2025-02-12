@@ -60,6 +60,8 @@ spec:
     - name: postgres
       databases:
         - obps
+      password:
+        type: AlphaNumeric
     - name: registration
       password:
         type: AlphaNumeric

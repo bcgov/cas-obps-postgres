@@ -61,8 +61,11 @@ spec:
       databases:
         - obps
     - name: registration
+      password:
+        type: AlphaNumeric
       databases:
         - obps
+      options: "CREATEROLE"
 
   backups:
     pgbackrest:

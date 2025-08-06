@@ -70,6 +70,10 @@ resources: {}
 
 storageSize: 2Gi
 
+wal:
+  separateStorage: false
+  storageSize: 1Gi
+
 autoscaling:
   enabled: false
   minReplicas: 1

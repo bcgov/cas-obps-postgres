@@ -9,3 +9,7 @@ resources:
   limits:
     cpu: 200m
     memory: 256Mi
+
+wal:
+  separateStorage: true
+

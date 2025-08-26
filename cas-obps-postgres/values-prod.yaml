@@ -10,3 +10,8 @@ resources:
     memory: 1200Mi
 
 storageSize: 3Gi
+
+wal:
+  separateStorage: true
+  storageSize: 3Gi
+

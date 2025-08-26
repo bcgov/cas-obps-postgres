@@ -56,6 +56,14 @@ spec:
                 matchLabels:
                   postgres-operator.crunchydata.com/cluster: {{ template "cas-obps-postgres.fullname" . }}
                   postgres-operator.crunchydata.com/instance-set: pgha1
+      {{- if .Values.wal.separateStorage }}
+      walVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: {{ .Values.wal.storageSize }}
+      {{- end }}
   users:
     - name: postgres
       databases:

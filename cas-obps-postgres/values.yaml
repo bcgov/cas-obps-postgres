@@ -96,3 +96,11 @@ terraform-bucket-provision:
 metabase:
   prefix: ~
   environment: ~
+
+cas-logging-sidecar:
+  tag: "oc-cas-bciers"
+  host: ~
+  collector:
+    gatewayServiceOverride: cas-bciers-vector-gateway
+  gateway:
+    deploy: false

@@ -15,3 +15,6 @@ wal:
   separateStorage: true
   storageSize: 3Gi
 
+cas-logging-sidecar:
+  host: ~
+  prefix: "cas-bciers-prod-logs"

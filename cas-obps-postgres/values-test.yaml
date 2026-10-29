@@ -13,3 +13,6 @@ resources:
 wal:
   separateStorage: true
 
+cas-logging-sidecar:
+  host: ~
+  prefix: "cas-bciers-test-logs"

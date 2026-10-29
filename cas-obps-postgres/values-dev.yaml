@@ -13,3 +13,7 @@ resources:
   limits:
     cpu: 200m
     memory: 256Mi
+
+cas-logging-sidecar:
+  host: ~
+  prefix: "cas-bciers-dev-logs"

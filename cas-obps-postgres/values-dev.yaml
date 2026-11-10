@@ -15,5 +15,6 @@ resources:
     memory: 256Mi
 
 cas-logging-sidecar:
+  enabled: true
   host: ~
   prefix: "cas-bciers-dev-logs"

@@ -29,8 +29,10 @@ spec:
       minAvailable: 1
       # these resources are for the "database" container in the "obps-postgres-pgha1" set of pods
       resources: {{ toYaml .Values.resources | nindent 8 }}
+      {{- if index .Values "cas-logging-sidecar" "enabled" }}
       containers:
         {{- include "vector-pgo-collector.container" (dict "values" (index .Values "cas-logging-sidecar") "appName" "cas-postgres") | nindent 8 }}
+      {{- end }}
       sidecars:
         # this stuff is for the "replication-cert-copy" container in the "obps-postgres-pgha1" set of pods
         replicaCertCopy:
@@ -66,9 +68,11 @@ spec:
           requests:
             storage: {{ .Values.wal.storageSize }}
       {{- end }}
+  {{- if index .Values "cas-logging-sidecar" "enabled" }}
   config:
     files:
       {{- include "vector-pgo-collector.config-mount" . | nindent 6 }}
+  {{- end }}
   users:
     - name: postgres
       databases:

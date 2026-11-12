@@ -2,6 +2,8 @@ SHELL := /usr/bin/env bash
 __FILENAME := $(lastword $(MAKEFILE_LIST))
 __DIRNAME := $(abspath $(realpath $(lastword $(MAKEFILE_LIST)))/../)
 
+TERRAFORM_PROVISION ?= false
+
 help: ## Show this help.
 	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
 
@@ -39,6 +41,7 @@ install: HELM_OPTS=--atomic --wait-for-jobs --timeout 2400s --namespace $(NAMESP
 										--set defaultImageTag=$(IMAGE_TAG) \
 										--set metabase.prefix=$(GGIRCS_NAMESPACE_PREFIX) \
 										--set metabase.environment=$(ENVIRONMENT) \
+										--set terraform-bucket-provision.enabled=$(TERRAFORM_PROVISION) \
 										--values $(CHART_DIR)/values-$(ENVIRONMENT).yaml
 install:
 	@set -euo pipefail; \

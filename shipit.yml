@@ -8,3 +8,12 @@ deploy:
   override:
     - make install:
         timeout: 5000
+
+  variables:
+    -
+      name: TERRAFORM_PROVISION
+      title: Run Terraform provisioning for storage buckets
+      default: false
+      select:
+        - true
+        - false

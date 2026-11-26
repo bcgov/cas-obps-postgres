@@ -62,7 +62,7 @@ spec:
       volumes:
         - name: attachment-credentials
           secret:
-            name: gcp-{{ .Release.Namespace }}-obps-backups-service-account-key
+            secretName: gcp-{{ .Release.Namespace }}-obps-backups-service-account-key
             items:
             - key: credentials.json
               path: attachment-credentials.json

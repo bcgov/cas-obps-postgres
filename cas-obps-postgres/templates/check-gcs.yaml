@@ -18,13 +18,13 @@ spec:
           imagePullPolicy: "Always"
           env:
             - name: GOOGLE_APPLICATION_CREDENTIALS
-              value: "/attachment-credentials/attachment-credentials.json"
+              value: "/backup-credentials/backup-credentials.json"
             - name: GS_BUCKET_NAMES
               value: >-
                 {{ .Release.Namespace }}-obps-backups
           volumeMounts:
-            - name: attachment-credentials
-              mountPath: /attachment-credentials
+            - name: backup-credentials
+              mountPath: /backup-credentials
               readOnly: true
             - mountPath: "/.config"
               name: config-volume
@@ -60,12 +60,12 @@ spec:
               exit 0
       automountServiceAccountToken: false
       volumes:
-        - name: attachment-credentials
+        - name: backup-credentials
           secret:
             secretName: gcp-{{ .Release.Namespace }}-obps-backups-service-account-key
             items:
             - key: credentials.json
-              path: attachment-credentials.json
+              path: backup-credentials.json
         - name: config-volume
           emptyDir:
             sizeLimit: 50Mi

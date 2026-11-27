@@ -3,6 +3,7 @@ __FILENAME := $(lastword $(MAKEFILE_LIST))
 __DIRNAME := $(abspath $(realpath $(lastword $(MAKEFILE_LIST)))/../)
 
 TERRAFORM_PROVISION ?= false
+VECTOR_LOGGING_SIDECAR ?= false
 
 help: ## Show this help.
 	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
@@ -42,6 +43,7 @@ install: HELM_OPTS=--atomic --wait-for-jobs --timeout 2400s --namespace $(NAMESP
 										--set metabase.prefix=$(GGIRCS_NAMESPACE_PREFIX) \
 										--set metabase.environment=$(ENVIRONMENT) \
 										--set terraform-bucket-provision.enabled=$(TERRAFORM_PROVISION) \
+										--set cas-logging-sidecar.enabled=$(VECTOR_LOGGING_SIDECAR) \
 										--values $(CHART_DIR)/values-$(ENVIRONMENT).yaml
 install:
 	@set -euo pipefail; \
